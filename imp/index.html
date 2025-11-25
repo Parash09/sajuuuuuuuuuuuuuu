@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just For You ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9ecb, #ffe4f2);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      margin-top: 70px;
+      background: white;
+      width: 90%;
+      padding: 25px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #e60073;
+      font-size: 28px;
+    }
+
+    .btn {
+      background: #e60073;
+      color: white;
+      padding: 15px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    #output {
+      margin-top: 18px;
+      font-size: 20px;
+      color: #e60073;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    /* Floating Hearts Animation */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: #ff6699;
+      font-size: 20px;
+      animation: floatUp 3s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.7); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey… I made this for you ❤️</h1>
+    <p>Tap a button 👇</p>
+
+    <button class="btn" onclick="showLine()">Make Me Smile 😄</button>
+    <div id="output"></div>
+
+    <button class="btn" onclick="secret()">Secret Message 🔐</button>
+  </div>
+
+  <script>
+    const compliments = [
+      "Your smile should be illegal—it’s too powerful.",
+      "Talking to you feels like sunshine.",
+      "You’re the reason WiFi isn’t the only connection I need.",
+      "If beauty was time, you’d be eternity.",
+      "You make everything around you better."
+    ];
+
+    function showLine() {
+      const line = compliments[Math.floor(Math.random() * compliments.length)];
+      document.getElementById('output').innerText = line;
+      spawnHearts();
+    }
+
+    function secret() {
+      document.getElementById('output').innerText =
+        "I don’t know how you do it… but you make my day without even trying. ❤️";
+      spawnHearts();
+    }
+
+    function spawnHearts() {
+      for (let i = 0; i < 10; i++) {
+        let h = document.createElement("div");
+        h.classList.add("heart");
+        h.style.left = Math.random() * window.innerWidth + "px";
+        h.style.animationDuration = (2 + Math.random()*2) + "s";
+        h.innerHTML = "❤️";
+        document.body.appendChild(h);
+
+        setTimeout(() => h.remove(), 3000);
+      }
+    }
+  </script>
+
+</body>
+</html>
