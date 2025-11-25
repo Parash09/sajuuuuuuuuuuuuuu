@@ -66,9 +66,29 @@
       0%   { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-800px) scale(1.7); opacity: 0; }
     }
+
+    /* 🔥 NEW: Blinking "I love you Saju" text */
+    #blinkMsg {
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: rgba(255, 0, 102, 0.4);
+      opacity: 0;
+      animation: blink 10s infinite;
+    }
+
+    @keyframes blink {
+      0%, 89% { opacity: 0; }
+      90%, 100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🔥 The blinking message -->
+  <div id="blinkMsg">I love you Saju ❤️</div>
 
   <div class="card">
     <h1>Sajuuuuuu ❤️</h1>
@@ -117,5 +137,3 @@
 
 </body>
 </html>
-
-
